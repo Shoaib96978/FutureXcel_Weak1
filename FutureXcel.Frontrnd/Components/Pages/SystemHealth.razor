@@ -1,0 +1,70 @@
+﻿@page "/system-health"
+@rendermode InteractiveServer
+@inject HttpClient Http
+
+<div class="main-wrapper">
+    <div class="status-container">
+
+        <h4 class="mb-4 text-center">FutureXcel</h4>
+
+        <div class="health-grid">
+
+            <!-- Frontend -->
+            <div class="health-item">
+                <div class="status-ring">
+                    <div class="ring-pulse" style="color:#4ade80"></div>
+                    <div class="ring-inner">
+                        <i class="bi bi-shield-check text-success"></i>
+                    </div>
+                </div>
+                <span>Frontend</span>
+                <div class="text-success">Online</div>
+            </div>
+
+            <!-- Backend -->
+            <div class="health-item">
+                <div class="status-ring">
+                    <div class="ring-pulse" style="color:@BackendColor"></div>
+                    <div class="ring-inner">
+                        <i class="bi @BackendIcon" style="color:@BackendColor"></i>
+                    </div>
+                </div>
+                <span>Backend</span>
+                <div class="@BackendTextClass">@BackendText</div>
+            </div>
+
+            <!-- Database -->
+            <div class="health-item">
+                <div class="status-ring">
+                    <div class="ring-pulse" style="color:@DatabaseColor"></div>
+                    <div class="ring-inner">
+                        <i class="bi @DatabaseIcon" style="color:@DatabaseColor"></i>
+                    </div>
+                </div>
+                <span>Database</span>
+                <div class="@DatabaseTextClass">@DatabaseText</div>
+            </div>
+
+        </div>
+
+        <button class="btn btn-premium"
+                disabled="@IsLoading"
+                @onclick="CheckSystemHealth">
+
+            @if (IsLoading)
+            {
+                <span class="spinner-border spinner-border-sm me-2"></span>
+                <span>Checking...</span>
+            }
+            else
+            {
+                <span>Execute Health Check</span>
+            }
+        </button>
+
+        <p class="mt-3 small text-muted">
+            Last ping: @LastChecked
+        </p>
+
+    </div>
+</div>
