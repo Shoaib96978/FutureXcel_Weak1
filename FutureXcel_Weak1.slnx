@@ -5,7 +5,4 @@
   <Folder Name="/Frontend/">
     <Project Path="FutureXcel.Frontrnd/FutureXcel.Frontrnd.csproj" Id="21f0677d-9deb-404b-8ced-cf071034912b" />
   </Folder>
-  <Folder Name="/Solution Items/">
-    <File Path="TextFile1.txt" />
-  </Folder>
 </Solution>
